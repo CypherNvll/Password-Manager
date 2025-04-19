@@ -2,10 +2,17 @@ import sqlite3
 from datetime import datetime
 
 class Database:
-    def __init__(self, db_path):
-        self.db_path = db_path
-        self.conn = None
-        self.cursor = None
+    def __init__(self, base_path: str = 'data'):
+        self.base_path = Path(base_path)
+        self.db_path = self.base_path / 'passwords.db'
+        self.salt_path = self.base_path / 'salt.bin'
+        self.backup_path = self.base_path / 'backups'
+        self.init_storage()
+
+    def init_storage(self):
+        """initialize storage directories"""
+        self.base_path.mkdir(exist_ok=True)
+        self.backup_path.mkdir(exist_ok=True)
         
     def connect(self):
         """creat db connection"""
