@@ -1,21 +1,15 @@
 import sqlite3
 from datetime import datetime
+from pathlib import Path
 
 class Database:
-    def __init__(self, base_path: str = 'data'):
-        self.base_path = Path(base_path)
-        self.db_path = self.base_path / 'passwords.db'
-        self.salt_path = self.base_path / 'salt.bin'
-        self.backup_path = self.base_path / 'backups'
-        self.init_storage()
-
-    def init_storage(self):
-        """initialize storage directories"""
-        self.base_path.mkdir(exist_ok=True)
-        self.backup_path.mkdir(exist_ok=True)
+    def __init__(self, db_path):
+        self.db_path = db_path  # Just store the path, no need for Path object here
+        self.conn = None
+        self.cursor = None
         
     def connect(self):
-        """creat db connection"""
+        """Create database connection"""
         try:
             self.conn = sqlite3.connect(self.db_path)
             self.cursor = self.conn.cursor()
@@ -23,7 +17,7 @@ class Database:
             print(f"Error connecting to database: {e}")
 
     def close(self):
-        """close db connection"""
+        """Close database connection"""
         if self.conn:
             self.conn.close()
 
