@@ -1,45 +1,33 @@
-# Password Manager
+# Secure Password Manager
 
-A password manager built with PyQt6 that stores encrypted passwords locally with backup capabilities.
+A command-line password manager that encrypts and stores your passwords locally with backup capabilities.
 
 ## Features
+- Strong encryption (PBKDF2HMAC with SHA256)
+- Password generation
+- Encrypted local storage
+- Backup and restore functionality
+- USB export/import support
+- Database management (add, view, clear)
 
-- Secure local password storage using AES-256 encryption
-- Password salting for enhanced security
-- Modern GUI built with PyQt6
-- Local backup and restore functionality
-- Password strength checker
-- Secure master password system
-
-## Project Structure
-
-```
-passwdmngr/
-├── src/
-│   ├── __init__.py
-│   ├── main.py
-│   ├── core/               # Core password management logic
-│   │   ├── __init__.py
-│   │   └── password.py
-│   ├── crypto/             # Encryption and security
-│   │   ├── __init__.py
-│   │   └── encryption.py
-│   ├── database/           # Database operations
-│   │   ├── __init__.py
-│   │   └── models.py
-│   └── ui/                 # User interface
-│       ├── __init__.py
-│       ├── main_window.py
-│       └── dialogs/
-├── tests/                  # Test files
-├── requirements.txt        # Project dependencies
-└── README.md               # This file
+## Requirements
+```bash
+pip install -r requirements.txt
 ```
 
-## Security Features
+## Usage
 
-- AES-256 encryption for stored passwords
-- Argon2 for master password hashing
-- Unique salt for each stored password
-- Secure memory handling
-- No cloud storage - all data stored locally 
+1. Start the application:
+```bash
+python src/main.py
+```
+
+2. Main operations:
+- Add new password (Option 1)
+- Retrieve password (Option 2)
+- Generate secure password (Option 3)
+- List all entries (Option 4)
+- Manage backups (Options 5-9)
+- Clear database (Option 10)
+
+**Important**: The master password cannot be recovered if forgotten. All passwords are encrypted using this master password. 
