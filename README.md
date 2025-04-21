@@ -23,11 +23,11 @@ python src/main.py
 ```
 
 2. Main operations:
-- Add new password (Option 1)
-- Retrieve password (Option 2)
-- Generate secure password (Option 3)
-- List all entries (Option 4)
-- Manage backups (Options 5-9)
-- Clear database (Option 10)
+- Add new password 
+- Retrieve password
+- Generate secure password
+- List all entries
+- Manage backups 
+- Clear database
 
-**Important**: The master password cannot be recovered if forgotten. All passwords are encrypted using this master password. 
+**Important**: The master password cannot be recovered if forgotten. All passwords are encrypted using this master password. or just backup ur stuff :]
